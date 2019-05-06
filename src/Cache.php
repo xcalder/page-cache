@@ -222,7 +222,7 @@ class Cache
             if($deomi == config('app.url')){
                 $page_cache = 'pc-cache';
             }
-            return $this->container->make('path.public').'/'.$page_cache;
+            return $this->container->make('path.public').'/page-cache/'.$page_cache;
         }
     }
 }
