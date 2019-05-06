@@ -4,6 +4,7 @@ namespace Silber\PageCache;
 
 use Exception;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Contracts\Container\Container;
 use Symfony\Component\HttpFoundation\Request;
@@ -219,7 +220,7 @@ class Cache
         if ($this->container && $this->container->bound('path.public')) {
             $deomi = URL::current();
             $page_cache = 'm-cache';
-            if($deomi == config('app.url')){
+            if(Str::startsWith($deomi, config('app.url'))){
                 $page_cache = 'pc-cache';
             }
             return $this->container->make('path.public').'/page-cache/'.$page_cache;
